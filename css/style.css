@@ -13,7 +13,79 @@ body {
 
 .wrapper {
   width: 100%;
-  height: 100vh;
-  background: linear-gradient(180deg, #009688 12%, #d8dbd5 12%);
+  min-width: 900px;
+  height: 100%;
+  background: linear-gradient(180deg, #009688 100px, #d8dbd5 100px);
   padding: 15px 0;
+}
+
+.boolz-app {
+  width: 100%;
+  max-width: 1170px;
+  min-width: 900px;
+  margin: 0 auto;
+  height: calc(100vh - 30px);
+  background: green;
+}
+
+.boolz-app::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+div[class*="-side"] {
+  float: left;
+  min-height: 300px;
+}
+
+.left-side {
+  width:30%;
+  background: red;
+  height: 100%;
+  border-right: 1px solid #ddd;
+}
+
+.right-side {
+  width:70%;
+  background: blue;
+  height: 100%
+}
+
+/* LEFT SIDE STYLE */
+.my-account {
+  height: 70px;
+  background: purple;
+}
+
+.notifiche {
+  height: 100px;
+  background: #8edafc;
+}
+
+.search-chat {
+  height: 70px;
+  background: yellow;
+}
+
+.contacts {
+  height: calc(100% - 240px);
+  background: grey;
+}
+
+
+/* RIGHT SIDE STYLE */
+.current-contact {
+  height: 70px;
+  background: blueviolet;
+}
+
+.chat-window {
+  height: calc(100% - 140px);
+  background: beige;
+}
+
+.send-message {
+  height: 70px;
+  background: crimson;
 }
