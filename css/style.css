@@ -40,21 +40,27 @@ div[class*="-side"] {
 }
 
 .left-side {
-  width:30%;
+  width:35%;
   background: red;
   height: 100%;
-  border-right: 1px solid #d4d4d4;
+  border-right: 1px solid #d6d6d6;
 }
 
 .right-side {
-  width:70%;
+  width:65%;
   background: blue; /* TODO debug purpose*/
   height: 100%
 }
 
-.left-side > div,
-.right-side > div {
+.left-side .my-account,
+.left-side .search-chat,
+.right-side .current-contact,
+.right-side .send-message {
   padding: 10px;
+}
+
+.left-side .notifiche {
+  padding: 15px;
 }
 
 ul {
@@ -80,8 +86,21 @@ a {
   background-color: #eaeaea;
   /* background: purple; */ /* TODO debug purpose*/
   display: flex;
-  flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
+}
+
+.my-account .my-avatar,
+.my-account .controls {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.controls i {
+  margin-right: 15px;
+  font-size: 1.5em;
+  color: #b1b1b1;
 }
 
 /* Notifiche block */
@@ -106,14 +125,42 @@ a {
 }
 
 .contacts li {
-  height: 70px;
+  height: 80px;
   padding: 10px 0;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
-li .contact-name {
-  font-weight: 500;
-  font-size: 1.4em;
+.contacts .contact-avatar {
+  height: 100%;
+  margin: 0 15px;
 }
+
+.contact-data .contact-name {
+  font-weight: 500;
+  font-size: 1.2em;
+  line-height: 1.6em;
+}
+
+.contact-data .contact-slogan {
+  font-size: 0.9em;
+  color: #b1b1b1;
+}
+
+.contacts .chat-time {
+  align-self: baseline;
+  padding: 5px;
+  font-size: 0.7em;
+  color: #ccc;
+  margin: 0 10px;
+}
+
+
 
 
 
