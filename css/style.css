@@ -48,7 +48,6 @@ div[class*="-side"] {
 
 .right-side {
   width:65%;
-  background: blue; /* TODO debug purpose*/
   height: 100%
 }
 
@@ -84,19 +83,16 @@ a {
 .my-account {
   height: 70px;
   background-color: #eaeaea;
-  /* background: purple; */ /* TODO debug purpose*/
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .my-account .my-avatar,
 .my-account .controls {
   display: flex;
   height: 100%;
   align-items: center;
 }
-
 .controls i {
   margin-right: 15px;
   font-size: 1.5em;
@@ -108,60 +104,98 @@ a {
   height: 80px;
   background: #8edafc;
 }
+.notifiche .bell-off {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  line-height: 50px;
+  text-align: center;
+  margin: 0 10px;
+  display: inline-block;
+  background-color: #fff;
+}
+.bell-off i {
+  font-size: 1.7em;
+  vertical-align: middle;
+  color: #8edafc;
+}
+.notifiche-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+.notifiche-block .notifiche-text {
+  font-weight: 500;
+  line-height: 1.5em;
+}
+.notifiche-block a {
+  font-size: 0.9em;
+  text-decoration: underline;
+  color: #9a9a9a;
+}
 
 /* Search block */
 .search-chat {
-  height: 70px;
-  background-color: #fafafa
-  /* background: yellow; */ /* TODO debug purpose*/
+  height: 60px;
+  background-color: #fafafa;
+  position: relative;
+}
+.search-chat i {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  font-size: 1.3em;
+  color: #d6d6d6;
+}
+.search-chat input {
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px 10px 45px;
+  border: 1px solid #b1b1b1;
+  border-radius: 3px;
+  font-size: 1em;
+  outline: none;
+}
+.search-chat input::placeholder {
+  font-size: 0.9em;
+  color: #b1b1b1;
 }
 
 /* Contacts block */
 .contacts {
-  height: calc(100% - 220px);
+  height: calc(100% - 210px);
   background-color: #fff;
   /* background: grey; */ /* TODO debug purpose*/
   overflow-y: auto;
 }
-
 .contacts li {
   height: 80px;
   padding: 10px 0;
-  display: block;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #d6d6d6;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-
 }
-
 .contacts .contact-avatar {
   height: 100%;
-  margin: 0 15px;
+  margin-left: 15px;
 }
-
 .contact-data .contact-name {
   font-weight: 500;
   font-size: 1.2em;
   line-height: 1.6em;
 }
-
 .contact-data .contact-slogan {
   font-size: 0.9em;
   color: #b1b1b1;
 }
-
-.contacts .chat-time {
+.contacts .time-stamp {
   align-self: baseline;
   padding: 5px;
   font-size: 0.7em;
   color: #ccc;
   margin: 0 10px;
 }
-
-
-
 
 
 /* RIGHT SIDE STYLE */
