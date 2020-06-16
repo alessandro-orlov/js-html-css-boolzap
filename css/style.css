@@ -229,12 +229,31 @@ a {
   background: url(../img/mine.jpg);
   overflow-y: auto;
 }
+.chat-window  {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.chat-window .flexy {
+  display: flex;
+  justify-content: flex-end;
+}
 .chat-window .tamplate {
-  width: 45%;
-  margin: 20px 50%;
-  padding: 15px;
+  max-width: 60%;
+  min-width: 20%;
+  margin: 20px;
+  padding: 10px;
   background: #d5f9ba;
   border-radius: 10px;
+}
+.tamplate .msg-text {
+  padding-right: 40px;
+}
+.tamplate .msg-time {
+  font-size: 0.7em;
+  color: #b1b1b1;
+  padding-top: 5px;
+  text-align: right;
 }
 
 /* Send message */
