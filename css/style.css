@@ -95,7 +95,7 @@ a {
 }
 .controls i {
   margin-right: 15px;
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #b1b1b1;
 }
 
@@ -103,10 +103,11 @@ a {
 .notifiche {
   height: 80px;
   background: #8edafc;
+  display: flex;
 }
 .notifiche .bell-off {
-  height: 50px;
-  width: 50px;
+  min-height: 50px;
+  min-width: 50px;
   border-radius: 50%;
   line-height: 50px;
   text-align: center;
@@ -125,7 +126,7 @@ a {
 }
 .notifiche-block .notifiche-text {
   font-weight: 500;
-  line-height: 1.5em;
+  line-height: 1.4em;
 }
 .notifiche-block a {
   font-size: 0.9em;
@@ -176,8 +177,14 @@ a {
   justify-content: space-between;
   align-items: center;
 }
-.contacts .contact-avatar {
+.contacts .contact-avatar,
+.current-contact .contact-avatar {
   height: 100%;
+  margin-left: 15px;
+  display: flex
+}
+.contacts .contact-data,
+.current-contact .contact-data {
   margin-left: 15px;
 }
 .contact-data .contact-name {
@@ -199,12 +206,20 @@ a {
 
 
 /* RIGHT SIDE STYLE */
+/* Current Account */
 .current-contact {
   height: 70px;
   background-color: #eaeaea;
-  /* background: blueviolet; */ /* TODO debug purpose*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact-data .contact-last-seen {
+  font-size: 0.9em;
+  color: #999;
 }
 
+/* Chat window */
 .chat-window {
   height: calc(100% - 140px);
   background-color: beige;
