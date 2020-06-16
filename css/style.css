@@ -52,30 +52,69 @@ div[class*="-side"] {
   height: 100%
 }
 
+.left-side > div,
+.right-side > div {
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+[alt*="avatar"] {
+  height: 100%;
+  vertical-align: middle;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
 /* LEFT SIDE STYLE */
+/* My account block */
 .my-account {
   height: 70px;
   background-color: #eaeaea;
   /* background: purple; */ /* TODO debug purpose*/
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
+/* Notifiche block */
 .notifiche {
   height: 80px;
   background: #8edafc;
 }
 
+/* Search block */
 .search-chat {
   height: 70px;
   background-color: #fafafa
   /* background: yellow; */ /* TODO debug purpose*/
 }
 
+/* Contacts block */
 .contacts {
   height: calc(100% - 220px);
   background-color: #fff;
   /* background: grey; */ /* TODO debug purpose*/
   overflow-y: auto;
 }
+
+.contacts li {
+  height: 70px;
+  padding: 10px 0;
+}
+
+li .contact-name {
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
 
 
 /* RIGHT SIDE STYLE */
