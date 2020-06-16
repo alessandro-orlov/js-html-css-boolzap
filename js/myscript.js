@@ -26,18 +26,38 @@ $(document).ready(
    });
 
 
-   // All passaggio del mouse visualizzo opzione elimina messaggio
+   // Al passaggio del mouse visualizzo freccetta
    $(document).on( 'mouseenter', '.tamplate',
     function() {
-      $(this).find('i').removeClass('hidden');
-      // Al click appare dropdown per eliminare il messaggio
+      $(this).find('.msg-time .message-options').removeClass('hidden');
+
+      // Al click sulla freccetta rimuovo classe .hidden delle opzioni
+      $(this).find('.msg-time .message-options').click(
+        function() {
+          $(this).siblings('.dropdown-canc-msg').toggleClass('hidden')
+
+          // All click su "elimina messaggio" - elimino tutto
+          $(this).siblings('.dropdown-canc-msg').click(
+            function() {
+              $(this).parents('.tamplate').remove();
+            });
+        });
+
+
     });
 
-  // Quando il mouse esce scompare l'opzione elimina messagio
-  $(document).on( 'mouseleave', '.tamplate',
-   function() {
-     $(this).find('i').addClass('hidden');
-   });
+    // Quando il mouse esce nascondo la freccetta
+     $(document).on( 'mouseleave', '.tamplate',
+       function() {
+         $(this).find('.msg-time .message-options').addClass('hidden');
+
+         // Nascondo il dropdown delle opzioni messaggio qualora fosse aperto
+         $(this).find('.dropdown-canc-msg').addClass('hidden')
+     });
+
+
+
+
 
   }); // End document ready
 
