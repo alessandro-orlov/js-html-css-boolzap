@@ -175,7 +175,6 @@ a {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: center;
 }
 .contacts .contact-avatar,
 .current-contact .contact-avatar {
@@ -186,6 +185,7 @@ a {
 .contacts .contact-data,
 .current-contact .contact-data {
   margin-left: 15px;
+  align-self: center;
 }
 .contact-data .contact-name {
   font-weight: 500;
@@ -227,8 +227,29 @@ a {
   overflow-y: auto;
 }
 
+/* Send message */
 .send-message {
   height: 70px;
   background-color: #f3eeea;
-  /* background: crimson; */ /* TODO debug purpose*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.send-message button {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  color: #6b7376;
+  font-size: 1.4em;
+}
+.send-message .write-message {
+  flex-basis: 80%;
+}
+.write-message input {
+ width: 100%;
+ padding: 15px;
+ outline: none;
+ border: none;
+ border-radius: 5px;
 }
