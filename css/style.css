@@ -77,6 +77,9 @@ a {
   display: inline-block;
 }
 
+.hidden {
+  display: none;
+}
 
 /* LEFT SIDE STYLE */
 /* My account block */
@@ -225,6 +228,13 @@ a {
   background-color: beige;
   background: url(../img/mine.jpg);
   overflow-y: auto;
+}
+.chat-window .tamplate {
+  width: 45%;
+  margin: 20px 50%;
+  padding: 15px;
+  background: #d5f9ba;
+  border-radius: 10px;
 }
 
 /* Send message */
