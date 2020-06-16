@@ -15,6 +15,17 @@ $(document).ready(
      console.log(messagioVal.length)
    });
 
+   // Invio il messagio alla chat premendo l'invio
+   $('.new-msg').keypress(function(event) {
+     var messagioVal = $('.new-msg').val();
+     if( messagioVal.length === 0) {
+       // non stampa nulla
+     } else if (event.which === 13) {
+        addElement(messagioVal);
+      }
+
+   });
+
   }); // End document ready
 
 // ==============================================
