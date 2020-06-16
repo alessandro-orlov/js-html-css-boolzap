@@ -43,49 +43,57 @@ div[class*="-side"] {
   width:30%;
   background: red;
   height: 100%;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #d4d4d4;
 }
 
 .right-side {
   width:70%;
-  background: blue;
+  background: blue; /* TODO debug purpose*/
   height: 100%
 }
 
 /* LEFT SIDE STYLE */
 .my-account {
   height: 70px;
-  background: purple;
+  background-color: #eaeaea;
+  /* background: purple; */ /* TODO debug purpose*/
 }
 
 .notifiche {
-  height: 100px;
+  height: 80px;
   background: #8edafc;
 }
 
 .search-chat {
   height: 70px;
-  background: yellow;
+  background-color: #fafafa
+  /* background: yellow; */ /* TODO debug purpose*/
 }
 
 .contacts {
-  height: calc(100% - 240px);
-  background: grey;
+  height: calc(100% - 220px);
+  background-color: #fff;
+  /* background: grey; */ /* TODO debug purpose*/
+  overflow-y: auto;
 }
 
 
 /* RIGHT SIDE STYLE */
 .current-contact {
   height: 70px;
-  background: blueviolet;
+  background-color: #eaeaea;
+  /* background: blueviolet; */ /* TODO debug purpose*/
 }
 
 .chat-window {
   height: calc(100% - 140px);
-  background: beige;
+  background-color: beige;
+  background: url(../img/mine.jpg);
+  overflow-y: auto;
 }
 
 .send-message {
   height: 70px;
-  background: crimson;
+  background-color: #f3eeea;
+  /* background: crimson; */ /* TODO debug purpose*/
 }
