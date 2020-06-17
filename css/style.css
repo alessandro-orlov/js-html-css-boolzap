@@ -234,21 +234,18 @@ a {
   flex-direction: column;
   align-items: flex-end;
 }
-.chat-window .flexy {
-  display: flex;
-  justify-content: flex-end;
-}
 .chat-window .tamplate {
   max-width: 60%;
   min-width: 20%;
   margin: 20px;
-  padding: 10px;
+  padding: 12px;
   background: #d5f9ba;
   border-radius: 10px;
   position: relative;
 }
 .tamplate .msg-text {
-  padding-right: 40px;
+  padding-right: 30px;
+  display: inline-block;
 }
 .tamplate .msg-time {
   font-size: 0.7em;
@@ -262,7 +259,7 @@ a {
   cursor: pointer;
   font-size: 1em;
 }
-.tamplate .dropdown-canc-msg {
+.tamplate .msg-option-dropdown {
   position: absolute;
   background-color: #fff;
   padding: 12px;
@@ -274,7 +271,7 @@ a {
   font-size: 1.1em;
   cursor: pointer;
 }
-.tamplate .dropdown-canc-msg:hover {
+.tamplate .msg-option-dropdown:hover {
   background-color: #e7e7e7;
 }
 

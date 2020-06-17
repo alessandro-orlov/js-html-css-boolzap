@@ -1,6 +1,9 @@
 $(document).ready(
   function() {
 
+    // ===================================================
+    // =========== INVIO IL MESSAGGIO ALLA CHAT ==========
+
     // Al click prendo il valore del input
    $('button.add-message-js').click(function() {
      // Prendo il vaolre dell'input
@@ -12,7 +15,6 @@ $(document).ready(
      } else {
        addElement(messagioVal);
      }
-     console.log(messagioVal.length)
    });
 
    // Invio il messagio alla chat premendo l'invio
@@ -23,10 +25,13 @@ $(document).ready(
      } else if (event.which === 13) {
         addElement(messagioVal);
       }
+
    });
 
+   // ===================================================
+   // ========= ELIMINO IL MESSAGGIO ALLA CHAT ==========
 
-    // Al passaggio del mouse visualizzo freccetta
+    // Evento mouse enter sul messaggio nella chat
     $(document).on( 'mouseenter', '.tamplate',
       function() {
         $(this).find('.msg-time .message-options').removeClass('hidden');
@@ -34,14 +39,15 @@ $(document).ready(
       // Al click sulla freccetta rimuovo classe .hidden delle opzioni
       $(this).find('.msg-time .message-options').click(
         function() {
-          $(this).siblings('.dropdown-canc-msg').toggleClass('hidden')
+          $(this).siblings('.msg-option-dropdown').removeClass('hidden')
 
           // All click su "elimina messaggio" - elimino tutto il mesaggio
-          $(this).siblings('.dropdown-canc-msg').click(
+          $(this).siblings('.msg-option-dropdown').click(
             function() {
               $(this).parents('.tamplate').remove();
           });
       });
+
     }); // End mouese enter event sul messaggio
 
     // Quando il mouse esce nascondo la freccetta
@@ -50,11 +56,36 @@ $(document).ready(
         $(this).find('.msg-time .message-options').addClass('hidden');
 
          // Nascondo il dropdown delle opzioni messaggio qualora fosse aperto
-         $(this).find('.dropdown-canc-msg').addClass('hidden')
+         $(this).find('.msg-option-dropdown').addClass('hidden')
      });
 
 
+     // RICERCA TRA I CONTATTI
+     $('input.search-contact').keypress(function(event) {
+       var searchResult = searcContactName();
+       if(event.which === 13) {
+         searchResult
+       }
+     });
 
+
+     // // DEBUG:
+     // $('.search-contact').keypress(
+     //   function(event) {
+     //     if(event.which === 13) {
+     //       var searchContact = $('input.search-contact').val().toLowerCase();
+     //       console.log(searchContact);
+     //       var contactName = $('.contact-name').each(function() {
+     //         $(this).find(this)
+     //         console.log(contactName);
+     //       });
+     //
+     //     }
+     //   }
+     // );
+     //
+     // var searchContact = $('.search-contact').val();
+     // console.log(searchContact)
 
 
   }); // End document ready
@@ -62,17 +93,59 @@ $(document).ready(
 // ==============================================
 // =============== FUNCTIONS ====================
 
-// // Function aggiungi l'elemento con il tamplate
+  // Function aggiungi l'elemento con il tamplate
   function addElement(value) {
     // Clone tamplate dal DOM html
-    var messageTamplate = $('.flexy .tamplate').clone();
+    var messageTamplate = $('.hidden .tamplate').clone();
+    var messageSendTime = getCurrentTime();
 
     // Aggiungo al Tamplate il valore del input
-    messageTamplate.prepend('<div class="msg-text">' + value + '</div>');
+    messageTamplate.find('.msg-text').append(value);
+    messageTamplate.find('.msg-send-time').append(messageSendTime);
 
     // Inserisco il messaggio alla chat
     $('.chat-window').append(messageTamplate);
 
     // Resetto il valore iniziale (vuoto) dell'input
     value = $('.new-msg').val('');
+
+    // Scroll to bottom
+    $('.chat-window').scrollTop($('.chat-window').height());
+    console.log($('.chat-window').height())
   }
+
+  // Prendo l'ora corrente
+  function getCurrentTime() {
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = zeroBeforeMinutes(date.getMinutes());
+    var time = hours + ':' + minutes;
+
+    return time
+  }
+
+  // Zero prima dei minuti
+  function zeroBeforeMinutes(minute) {
+    if(minute < 10) {
+      minute = '0' + minute
+    }
+    return minute
+  }
+
+  function searcContactName() {
+    $('.search-contact').keyup(
+      function() {
+      var searchContact = $('input.search-contact').val().toLowerCase();
+        $('li').each( function() {
+
+          var contactName = $(this).find('.contact-name').text().toLowerCase();
+          if( contactName.includes(searchContact) ) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        }); // end each
+      } //keypress function
+
+    ); // keypress end
+  } // end function
