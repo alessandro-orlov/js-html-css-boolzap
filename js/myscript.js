@@ -13,7 +13,7 @@ $(document).ready(
      if(messagioVal.length === 0) {
        //non stampa niente se non è stato inserito alcun carattere
      } else {
-       addElement(messagioVal);
+       myMessage(messagioVal);
      }
    });
 
@@ -23,7 +23,7 @@ $(document).ready(
      if( messagioVal.length === 0) {
        // non stampa nulla
      } else if (event.which === 13) {
-        addElement(messagioVal);
+        myMessage(messagioVal);
       }
 
    });
@@ -32,7 +32,7 @@ $(document).ready(
    // ========= ELIMINO IL MESSAGGIO ALLA CHAT ==========
 
     // Evento mouse enter sul messaggio nella chat
-    $(document).on( 'mouseenter', '.tamplate',
+    $(document).on( 'mouseenter', '.tamplate, .tamplate-response',
       function() {
         $(this).find('.msg-time .message-options').removeClass('hidden');
 
@@ -51,7 +51,7 @@ $(document).ready(
     }); // End mouese enter event sul messaggio
 
     // Quando il mouse esce nascondo la freccetta
-    $(document).on( 'mouseleave', '.tamplate',
+    $(document).on( 'mouseleave', '.tamplate, .tamplate-response',
       function() {
         $(this).find('.msg-time .message-options').addClass('hidden');
 
@@ -69,32 +69,13 @@ $(document).ready(
      });
 
 
-     // // DEBUG:
-     // $('.search-contact').keypress(
-     //   function(event) {
-     //     if(event.which === 13) {
-     //       var searchContact = $('input.search-contact').val().toLowerCase();
-     //       console.log(searchContact);
-     //       var contactName = $('.contact-name').each(function() {
-     //         $(this).find(this)
-     //         console.log(contactName);
-     //       });
-     //
-     //     }
-     //   }
-     // );
-     //
-     // var searchContact = $('.search-contact').val();
-     // console.log(searchContact)
-
-
   }); // End document ready
 
 // ==============================================
 // =============== FUNCTIONS ====================
 
   // Function aggiungi l'elemento con il tamplate
-  function addElement(value) {
+  function myMessage(value) {
     // Clone tamplate dal DOM html
     var messageTamplate = $('.hidden .tamplate').clone();
     var messageSendTime = getCurrentTime();
@@ -136,7 +117,7 @@ $(document).ready(
     $('.search-contact').keyup(
       function() {
       var searchContact = $('input.search-contact').val().toLowerCase();
-        $('li').each( function() {
+        $('li.contact-js').each( function() {
 
           var contactName = $(this).find('.contact-name').text().toLowerCase();
           if( contactName.includes(searchContact) ) {

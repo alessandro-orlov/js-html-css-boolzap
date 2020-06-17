@@ -234,32 +234,41 @@ a {
   flex-direction: column;
   align-items: flex-end;
 }
-.chat-window .tamplate {
+.chat-window .tamplate,
+.chat-window .tamplate-response {
   max-width: 60%;
   min-width: 20%;
   margin: 20px;
-  padding: 12px;
+  padding: 15px;
   background: #d5f9ba;
   border-radius: 10px;
   position: relative;
 }
-.tamplate .msg-text {
+.chat-window .tamplate-response {
+  background: #f7f7f7;
+  align-self: flex-start;
+}
+.tamplate .msg-text,
+.tamplate-response .msg-text {
   padding-right: 30px;
   display: inline-block;
 }
-.tamplate .msg-time {
+.tamplate .msg-time,
+.tamplate-response .msg-time {
   font-size: 0.7em;
   color: #b1b1b1;
   position: absolute;
   right: 5px;
   bottom: 5px;
 }
-.tamplate .message-options {
+.tamplate .message-options,
+.tamplate-response .message-options {
   padding: 5px;
   cursor: pointer;
   font-size: 1em;
 }
-.tamplate .msg-option-dropdown {
+.tamplate .msg-option-dropdown,
+.tamplate-response .msg-option-dropdown {
   position: absolute;
   background-color: #fff;
   padding: 12px;
@@ -271,7 +280,8 @@ a {
   font-size: 1.1em;
   cursor: pointer;
 }
-.tamplate .msg-option-dropdown:hover {
+.tamplate .msg-option-dropdown:hover,
+.tamplate-response .msg-option-dropdown:hover {
   background-color: #e7e7e7;
 }
 
