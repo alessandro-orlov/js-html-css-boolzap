@@ -15,6 +15,11 @@ $(document).ready(
      } else {
        myMessage(messagioVal);
      }
+
+     setTimeout(function() {
+       responseMessage()
+     }, 1500);
+
    });
 
    // Invio il messagio alla chat premendo l'invio
@@ -24,7 +29,13 @@ $(document).ready(
        // non stampa nulla
      } else if (event.which === 13) {
         myMessage(messagioVal);
+
+        setTimeout(function() {
+          responseMessage()
+        }, 1500);
+
       }
+
 
    });
 
@@ -59,8 +70,8 @@ $(document).ready(
          $(this).find('.msg-option-dropdown').addClass('hidden')
      });
 
-
-     // RICERCA TRA I CONTATTI
+     //==========================================
+     //======== RICERCA TRA I CONTATTI ==========
      $('input.search-contact').keypress(function(event) {
        var searchResult = searcContactName();
        if(event.which === 13) {
@@ -68,13 +79,12 @@ $(document).ready(
        }
      });
 
-
   }); // End document ready
 
 // ==============================================
 // =============== FUNCTIONS ====================
 
-  // Function aggiungi l'elemento con il tamplate
+  // Function invio del messaggio dell'utente
   function myMessage(value) {
     // Clone tamplate dal DOM html
     var messageTamplate = $('.hidden .tamplate').clone();
@@ -89,6 +99,23 @@ $(document).ready(
 
     // Resetto il valore iniziale (vuoto) dell'input
     value = $('.new-msg').val('');
+
+    // Scroll to bottom
+    $('.chat-window').scrollTop($('.chat-window').height());
+    console.log($('.chat-window').height())
+  }
+
+  // Function risposta al messaggio
+  function responseMessage() {
+    var responseTamplate = $('.hidden .tamplate-response').clone();
+    var responseTime = getCurrentTime();
+
+    // Aggiungo la risposta con .text();
+    responseTamplate.find('.msg-text').text('ok');
+    responseTamplate.find('.msg-send-time').append(responseTime);
+
+    // Aggiungo il messaggi di risposta alla chat
+    $('.chat-window').append(responseTamplate);
 
     // Scroll to bottom
     $('.chat-window').scrollTop($('.chat-window').height());
@@ -113,6 +140,7 @@ $(document).ready(
     return minute
   }
 
+  // Funzione per cercare il nome del utente o chat
   function searcContactName() {
     $('.search-contact').keyup(
       function() {
