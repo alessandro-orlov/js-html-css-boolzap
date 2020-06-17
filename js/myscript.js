@@ -55,7 +55,7 @@ $(document).ready(
           // All click su "elimina messaggio" - elimino tutto il mesaggio
           $(this).siblings('.msg-option-dropdown').click(
             function() {
-              $(this).parents('.tamplate').remove();
+              $(this).parents('.tamplate, .tamplate-response').remove();
           });
       });
 
