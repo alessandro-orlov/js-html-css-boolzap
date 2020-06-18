@@ -310,6 +310,7 @@ a {
   cursor: pointer;
   color: #6b7376;
   font-size: 1.4em;
+  padding: 2px;
 }
 .send-message .write-message {
   flex-basis: 80%;
@@ -320,4 +321,16 @@ a {
  outline: none;
  border: none;
  border-radius: 5px;
+}
+.send-message .emoji,
+.send-message .send-btn {
+  flex-basis: 10%;
+  text-align: center;
+}
+.send-btn .send-audio-msg,
+.send-btn button:active .send-normal-msg {
+  display: none;
+}
+.send-btn button:active .send-audio-msg {
+  display: block;
 }
