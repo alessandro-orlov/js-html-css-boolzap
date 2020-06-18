@@ -14,11 +14,11 @@ $(document).ready(
        //non stampa niente se non è stato inserito alcun carattere
      } else {
        myMessage(messagioVal);
-     }
 
-     setTimeout(function() {
-       responseMessage()
-     }, 1500);
+       setTimeout(function() {
+         responseMessage()
+       }, 1500);
+     }
 
    });
 
