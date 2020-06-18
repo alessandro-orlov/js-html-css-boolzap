@@ -13,6 +13,8 @@ $(document).ready(
         // Seleziono Nome
         var contactName = $(this).find('.contact-name').text();
         console.log(contactName)
+        // Seleziono l'orario dell'ultima volta online
+        var lastTimeSeen = $(this).find('.time-stamp').text();
 
         // Sostituisco dati del ".active-contact" con quelli cliccati
         // Sostituisco Avatar
@@ -21,6 +23,8 @@ $(document).ready(
         // Sostituisco il nome
         var currentContactName = $('.active-contact').find('.contact-name').text(contactName)
         console.log(currentContactName)
+        // Sostituisco l'orraio dell'ultima visita
+        var cuurentLastTimeSeen = $('.active-contact').find('.last-time-seen').text(lastTimeSeen)
 
         // Aggiungo classe active al contatto cliccato e lo rimuovo a quello
         // attualmente attivo
@@ -45,9 +49,6 @@ $(document).ready(
         $(dataChat).siblings().removeClass('visible');
 
       });
-
-
-
 
 
 
