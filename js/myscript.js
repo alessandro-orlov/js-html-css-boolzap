@@ -5,42 +5,38 @@ $(document).ready(
     // =========== INVIO IL MESSAGGIO ALLA CHAT ==========
 
     // Al click prendo il valore del input
-   $('button.add-message-js').click(function() {
-     // Prendo il vaolre dell'input
-     var messagioVal = $('.new-msg').val();
-
-     // Aggiungo il messaggio tamplate alla chat
-     if(messagioVal.length === 0) {
-       //non stampa niente se non è stato inserito alcun carattere
-     } else {
-       myMessage(messagioVal);
-
-       setTimeout(function() {
-         responseMessage()
-       }, 1500);
-     }
-
-   });
-
-   // Invio il messagio alla chat premendo l'invio
-   $('.new-msg').keypress(function(event) {
-     var messagioVal = $('.new-msg').val();
-     if( messagioVal.length === 0) {
-       // non stampa nulla
-     } else if (event.which === 13) {
-        myMessage(messagioVal);
+    $('button.add-message-js').click(function() {
+      // Prendo il vaolre dell'input
+      var messaggioVal = $('.new-msg').val();
+      var risposta = 'ok';
+      // Aggiungo il messaggio tamplate alla chat
+      if( messaggioVal !='' ) {
+        myMessage(messaggioVal);
 
         setTimeout(function() {
-          responseMessage()
+          responseMessage(risposta)
         }, 1500);
+      } // End if
+    }); // End click on button event
 
-      }
+    // Invio il messagio alla chat premendo l'invio
+    $('.new-msg').keypress(function(event) {
+      var messaggioVal = $('.new-msg').val();
+      var risposta = 'Ciao';
+      if( (messaggioVal !='' ) && (event.which === 13) ) {
+        // Stampo il messagio nella chat window
+        myMessage(messaggioVal);
 
+        // Dopo 1.5s invio la risposta
+        setTimeout(function() {
+          responseMessage(risposta)
+        }, 1500);
+      } // End if
 
-   });
+    }); // End keypress event
 
    // ===================================================
-   // ========= ELIMINO IL MESSAGGIO ALLA CHAT ==========
+   // ========= ELIMINO IL MESSAGGIO DALLA CHAT ==========
 
     // Evento mouse enter sul messaggio nella chat
     $(document).on( 'mouseenter', '.tamplate, .tamplate-response',
@@ -50,8 +46,7 @@ $(document).ready(
       // Al click sulla freccetta rimuovo classe .hidden delle opzioni
       $(this).find('.msg-time .message-options').click(
         function() {
-          $(this).siblings('.msg-option-dropdown').removeClass('hidden')
-
+          $(this).siblings('.msg-option-dropdown').toggleClass('hidden');
           // All click su "elimina messaggio" - elimino tutto il mesaggio
           $(this).siblings('.msg-option-dropdown').click(
             function() {
@@ -81,6 +76,8 @@ $(document).ready(
 
   }); // End document ready
 
+
+
 // ==============================================
 // =============== FUNCTIONS ====================
 
@@ -106,12 +103,12 @@ $(document).ready(
   }
 
   // Function risposta al messaggio
-  function responseMessage() {
+  function responseMessage(text) {
     var responseTamplate = $('.hidden .tamplate-response').clone();
     var responseTime = getCurrentTime();
 
     // Aggiungo la risposta con .text();
-    responseTamplate.find('.msg-text').text('ok');
+    responseTamplate.find('.msg-text').text(text);
     responseTamplate.find('.msg-send-time').append(responseTime);
 
     // Aggiungo il messaggi di risposta alla chat
@@ -142,19 +139,17 @@ $(document).ready(
 
   // Funzione per cercare il nome del utente o chat
   function searcContactName() {
-    $('.search-contact').keyup(
-      function() {
+    $('.search-contact').keyup( function() {
       var searchContact = $('input.search-contact').val().toLowerCase();
-        $('li.contact-js').each( function() {
+      var allContacts = $('li.contact-js');
 
-          var contactName = $(this).find('.contact-name').text().toLowerCase();
-          if( contactName.includes(searchContact) ) {
-            $(this).show();
-          } else {
-            $(this).hide();
-          }
-        }); // end each
-      } //keypress function
-
-    ); // keypress end
-  } // end function
+      allContacts.each( function() {
+        var contactName = $(this).find('.contact-name').text().toLowerCase();
+        if( contactName.includes(searchContact) ) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      }); // End each
+    }); // End keyup function
+  } // End searcContactName() function
