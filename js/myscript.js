@@ -1,8 +1,8 @@
 $(document).ready(
   function() {
 
-    // ===================================================
-    // ========= MOSTRO CONTATTO E CHAT CORRENTE =========
+    // ========================================================
+    // === MOSTRO CONTATTO CLICCATO NELLA SEZIONE A DESTRA ====
 
     $('li.contact-js').click(
       function() {
@@ -24,15 +24,27 @@ $(document).ready(
 
         // Aggiungo classe active al contatto cliccato e lo rimuovo a quello
         // attualmente attivo
-        $(this).siblings().removeClass('active')
-        $(this, '.contact-js').addClass('active')
-
-
+        $(this).siblings().removeClass('active');
+        $(this, 'li.contact-js').addClass('active');
     });
 
 
+    // =======================================================
+    // ========== MOSTRO CHAT DEL CONTATTO ATTIVO ===========
 
+    // Seleziono la chat del contatto attivo
+    $('li.contact-js').click(
+      function() {
+        // Seleziono attr di controllo sul contatto
+        var dataContact = $(this).attr('data-contact');
+        console.log(dataContact);
 
+        var dataChat = '.chat-saved[data-chat="'+ dataContact +'"]';
+        console.log('dataChat: ' + dataChat);
+        $(dataChat).addClass('visible');
+        $(dataChat).siblings().removeClass('visible');
+
+      });
 
 
 
@@ -77,7 +89,7 @@ $(document).ready(
    // ========= ELIMINO IL MESSAGGIO DALLA CHAT ==========
 
     // Evento mouse enter sul messaggio nella chat
-    $(document).on( 'mouseenter', '.tamplate, .tamplate-response',
+    $(document).on( 'mouseenter', '.message',
       function() {
         $(this).find('.msg-time .message-options').removeClass('hidden');
 
@@ -88,14 +100,14 @@ $(document).ready(
           // All click su "elimina messaggio" - elimino tutto il mesaggio
           $(this).siblings('.msg-option-dropdown').click(
             function() {
-              $(this).parents('.tamplate, .tamplate-response').remove();
+              $(this).parents('.message').remove();
           });
       });
 
     }); // End mouese enter event sul messaggio
 
     // Quando il mouse esce nascondo la freccetta
-    $(document).on( 'mouseleave', '.tamplate, .tamplate-response',
+    $(document).on( 'mouseleave', '.message',
       function() {
         $(this).find('.msg-time .message-options').addClass('hidden');
 
@@ -120,20 +132,20 @@ $(document).ready(
 // =============== FUNCTIONS ====================
 
   // Function invio del messaggio dell'utente
-  function myMessage(value) {
+  function myMessage(testoMessaggio) {
     // Clone tamplate dal DOM html
-    var messageTamplate = $('.hidden .tamplate').clone();
+    var messageTamplate = $('.tamplate .message.send').clone();
     var messageSendTime = getCurrentTime();
 
     // Aggiungo al Tamplate il valore del input
-    messageTamplate.find('.msg-text').append(value);
+    messageTamplate.find('.msg-text').append(testoMessaggio);
     messageTamplate.find('.msg-send-time').append(messageSendTime);
 
     // Inserisco il messaggio alla chat
-    $('.chat-window').append(messageTamplate);
+    $('.chat-window .visible').append(messageTamplate);
 
     // Resetto il valore iniziale (vuoto) dell'input
-    value = $('.new-msg').val('');
+    testoMessaggio = $('.new-msg').val('');
 
     // Scroll to bottom
     $('.chat-window').scrollTop($('.chat-window').height());
@@ -142,7 +154,7 @@ $(document).ready(
 
   // Function risposta al messaggio
   function responseMessage(text) {
-    var responseTamplate = $('.hidden .tamplate-response').clone();
+    var responseTamplate = $('.tamplate .message.recieved').clone();
     var responseTime = getCurrentTime();
 
     // Aggiungo la risposta con .text();
@@ -150,7 +162,7 @@ $(document).ready(
     responseTamplate.find('.msg-send-time').append(responseTime);
 
     // Aggiungo il messaggi di risposta alla chat
-    $('.chat-window').append(responseTamplate);
+    $('.chat-window .visible').append(responseTamplate);
 
     // Scroll to bottom
     $('.chat-window').scrollTop($('.chat-window').height());

@@ -62,7 +62,7 @@
           <div class="contacts">
             <ul>
 
-              <li class="contact-js active">
+              <li class="contact-js active" data-contact="0">
                 <div class="contact-avatar">
                   <img src="img/avatar_1.jpg" alt="my_avatar">
                   <div class="contact-data">
@@ -77,7 +77,7 @@
                 </div>
               </li>
 
-              <li class="contact-js">
+              <li class="contact-js" data-contact="1">
                 <div class="contact-avatar">
                   <img src="img/avatar_2.jpg" alt="my_avatar">
                   <div class="contact-data">
@@ -92,7 +92,7 @@
                 </div>
               </li>
 
-              <li class="contact-js">
+              <li class="contact-js" data-contact="2">
                 <div class="contact-avatar">
                   <img src="img/avatar_3.jpg" alt="my_avatar">
                   <div class="contact-data">
@@ -107,7 +107,7 @@
                 </div>
               </li>
 
-              <li class="contact-js">
+              <li class="contact-js" data-contact="3">
                 <div class="contact-avatar">
                   <img src="img/avatar_4.jpg" alt="my_avatar">
                   <div class="contact-data">
@@ -122,7 +122,7 @@
                 </div>
               </li>
 
-              <li class="contact-js">
+              <li class="contact-js" data-contact="4">
                 <div class="contact-avatar">
                   <img src="img/avatar_5.jpg" alt="my_avatar">
                   <div class="contact-data">
@@ -137,7 +137,7 @@
                 </div>
               </li>
 
-              <li class="contact-js">
+              <li class="contact-js" data-contact="5">
                 <div class="contact-avatar">
                   <img src="img/avatar_6.jpg" alt="my_avatar">
                   <div class="contact-data">
@@ -152,7 +152,7 @@
                 </div>
               </li>
 
-              <li class="contact-js">
+              <li class="contact-js" data-contact="6">
                 <div class="contact-avatar">
                   <img src="img/avatar_7.jpg" alt="my_avatar">
                   <div class="contact-data">
@@ -167,7 +167,7 @@
                 </div>
               </li>
 
-              <li class="contact-js">
+              <li class="contact-js" data-contact="7">
                 <div class="contact-avatar">
                   <img src="img/avatar_8.jpg" alt="my_avatar">
                   <div class="contact-data">
@@ -211,37 +211,297 @@
 
           <!-- Begin chat-window -->
           <div class="chat-window">
-            <div class="tamplate">
-              <div class="msg-text">Buongiorno</div>
-              <div class="msg-time">
-                <span class="message-options hidden">
-                  <i class="fas fa-angle-down"></i>
-                </span>
-                <div class="msg-option-dropdown hidden">
-                  elimina messaggio
-                </div>
-                <span class="msg-send-time">11:05</span>
-              </div>
-            </div>
 
-            <div class="tamplate-response">
-              <div class="msg-text">Buongiorno a te :)</div>
-              <div class="msg-time">
-                <span class="message-options hidden">
-                  <i class="fas fa-angle-down"></i>
-                </span>
-                <div class="msg-option-dropdown hidden">
-                  elimina messaggio
+            <!-- Begin saved-chat Michele  -->
+            <div class="chat-saved visible" data-chat="0">
+
+              <!-- Mio messagio -->
+              <div class="message send">
+                <div class="msg-text">Ciao Michele, come va?</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:53</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
                 </div>
-                <span class="msg-send-time">11:06</span>
               </div>
+
+              <!-- Risposta -->
+              <div class="message recieved">
+                <div class="msg-text">Benone, tu come stai?</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:54</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
             </div>
+            <!-- End saved-chat Michele -->
+
+            <!-- Begin saved-chat Fabio  -->
+            <div class="chat-saved" data-chat="1">
+
+              <!-- Mio messagio -->
+              <div class="message send">
+                <div class="msg-text">Ciao Fabio</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:53</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+              <!-- Risposta -->
+              <div class="message recieved">
+                <div class="msg-text">Ehila</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:54</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <!-- End saved-chat Fabio -->
+
+            <!-- Begin saved-chat Samuele  -->
+            <div class="chat-saved" data-chat="2">
+
+              <!-- Mio messagio -->
+              <div class="message send">
+                <div class="msg-text">Samuele</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:53</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+              <!-- Risposta -->
+              <div class="message recieved">
+                <div class="msg-text">Ehila</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:54</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <!-- End saved-chat Samuele -->
+
+            <!-- Begin saved-chat Alessandro B.  -->
+            <div class="chat-saved" data-chat="3">
+
+              <!-- Mio messagio -->
+              <div class="message send">
+                <div class="msg-text">Ciao Alessandro B.</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:53</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+              <!-- Risposta -->
+              <div class="message recieved">
+                <div class="msg-text">Ehila</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:54</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <!-- End saved-chat Alessandro B. -->
+
+            <!-- Begin saved-chat Alessandro L.  -->
+            <div class="chat-saved" data-chat="4">
+
+              <!-- Mio messagio -->
+              <div class="message send">
+                <div class="msg-text">Ciao Alessandro L.</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:53</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+              <!-- Risposta -->
+              <div class="message recieved">
+                <div class="msg-text">Ehila</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:54</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <!-- End saved-chat Alessandro L. -->
+
+            <!-- Begin saved-chat Claudia  -->
+            <div class="chat-saved" data-chat="5">
+
+              <!-- Mio messagio -->
+              <div class="message send">
+                <div class="msg-text">Ciao Claudia</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:53</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+              <!-- Risposta -->
+              <div class="message recieved">
+                <div class="msg-text">Ehila</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:54</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <!-- End saved-chat Claudia -->
+
+            <!-- Begin saved-chat Davide  -->
+            <div class="chat-saved" data-chat="6">
+
+              <!-- Mio messagio -->
+              <div class="message send">
+                <div class="msg-text">Ciao Davide</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:53</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+              <!-- Risposta -->
+              <div class="message recieved">
+                <div class="msg-text">Ehila</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:54</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <!-- End saved-chat Davide -->
+
+            <!-- Begin saved-chat Federico  -->
+            <div class="chat-saved" data-chat="7">
+
+              <!-- Mio messagio -->
+              <div class="message send">
+                <div class="msg-text">Ciao Federico</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:53</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+              <!-- Risposta -->
+              <div class="message recieved">
+                <div class="msg-text">Ehila</div>
+                <div class="msg-time">
+                  <span class="message-options hidden">
+                    <i class="fas fa-angle-down"></i>
+                  </span>
+                  <span class="msg-send-time">11:54</span>
+                  <span class="msg-option-dropdown hidden">
+                    Elimina messaggio
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <!-- End saved-chat Federico -->
 
 
             <!-- Begin tamplate -->
-            <div class=" hidden">
+            <div class="tamplate">
 
-                <div class="tamplate">
+                <div class="message send">
+                  <div class="msg-text"></div>
+                  <div class="msg-time">
+                    <span class="message-options hidden">
+                      <i class="fas fa-angle-down"></i>
+                    </span>
+                    <span class="msg-send-time"></span>
+                    <span class="msg-option-dropdown hidden">
+                      Elimina messaggio
+                    </span>
+                  </div>
+                </div>
+
+                <div class="message recieved">
                   <div class="msg-text"></div>
                   <div class="msg-time">
                     <span class="message-options hidden">
@@ -256,25 +516,6 @@
 
             </div>
             <!-- End tamplate -->
-
-            <!-- Begin tamplate.response -->
-            <div class=" hidden">
-
-            <div class="tamplate-response">
-              <div class="msg-text"></div>
-              <div class="msg-time">
-                <span class="message-options hidden">
-                  <i class="fas fa-angle-down"></i>
-                </span>
-                <span class="msg-send-time"></span>
-                <span class="msg-option-dropdown hidden">
-                  Elimina messaggio
-                </span>
-              </div>
-            </div>
-
-            </div>
-            <!-- End tamplate.response -->
 
           </div>
           <!-- End chat-window -->
