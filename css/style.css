@@ -53,7 +53,7 @@ div[class*="-side"] {
 
 .left-side .my-account,
 .left-side .search-chat,
-.right-side .current-contact,
+.right-side .active-contact,
 .right-side .send-message {
   padding: 10px;
 }
@@ -179,14 +179,20 @@ a {
   flex-wrap: nowrap;
   justify-content: space-between;
 }
+.contacts li.contact-js {
+  cursor: pointer;
+}
+.contacts li.contact-js.active {
+  background-color: #e9e9e9;
+}
 .contacts .contact-avatar,
-.current-contact .contact-avatar {
+.active-contact .contact-avatar {
   height: 100%;
   margin-left: 15px;
   display: flex
 }
 .contacts .contact-data,
-.current-contact .contact-data {
+.active-contact .contact-data {
   margin-left: 15px;
   align-self: center;
 }
@@ -209,8 +215,8 @@ a {
 
 
 /* RIGHT SIDE STYLE */
-/* Current Account */
-.current-contact {
+/* Active contact */
+.active-contact {
   height: 70px;
   background-color: #eaeaea;
   display: flex;

@@ -2,6 +2,44 @@ $(document).ready(
   function() {
 
     // ===================================================
+    // ========= MOSTRO CONTATTO E CHAT CORRENTE =========
+
+    $('li.contact-js').click(
+      function() {
+        // Seleziono dati dell'utente su quale clicco
+        // Seleziono Avatar
+        var avatarSrc = $(this).find('img').attr('src');
+        console.log(avatarSrc);
+        // Seleziono Nome
+        var contactName = $(this).find('.contact-name').text();
+        console.log(contactName)
+
+        // Sostituisco dati del ".active-contact" con quelli cliccati
+        // Sostituisco Avatar
+        var currentContactAvatar = $('.active-contact').find('img').attr('src', avatarSrc);
+        console.log(currentContactAvatar)
+        // Sostituisco il nome
+        var currentContactName = $('.active-contact').find('.contact-name').text(contactName)
+        console.log(currentContactName)
+
+        // Aggiungo classe active al contatto cliccato e lo rimuovo a quello
+        // attualmente attivo
+        $(this).siblings().removeClass('active')
+        $(this, '.contact-js').addClass('active')
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+    // ===================================================
     // =========== INVIO IL MESSAGGIO ALLA CHAT ==========
 
     // Al click prendo il valore del input
