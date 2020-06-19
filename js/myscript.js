@@ -9,22 +9,22 @@ $(document).ready(
         // Seleziono dati dell'utente su quale clicco
         // Seleziono Avatar
         var avatarSrc = $(this).find('img').attr('src');
-        console.log(avatarSrc);
+
         // Seleziono Nome
         var contactName = $(this).find('.contact-name').text();
-        console.log(contactName)
+
         // Seleziono l'orario dell'ultima volta online
         var lastTimeSeen = $(this).find('.time-stamp').text();
 
         // Sostituisco dati del ".active-contact" con quelli cliccati
         // Sostituisco Avatar
-        var currentContactAvatar = $('.active-contact').find('img').attr('src', avatarSrc);
-        console.log(currentContactAvatar)
+        $('.active-contact').find('img').attr('src', avatarSrc);
+
         // Sostituisco il nome
-        var currentContactName = $('.active-contact').find('.contact-name').text(contactName)
-        console.log(currentContactName)
+        $('.active-contact').find('.contact-name').text(contactName);
+
         // Sostituisco l'orraio dell'ultima visita
-        var cuurentLastTimeSeen = $('.active-contact').find('.last-time-seen').text(lastTimeSeen)
+        $('.active-contact').find('.last-time-seen').text(lastTimeSeen);
 
         // Aggiungo classe active al contatto cliccato e lo rimuovo a quello
         // attualmente attivo
@@ -41,15 +41,12 @@ $(document).ready(
       function() {
         // Seleziono attr di controllo sul contatto
         var dataContact = $(this).attr('data-contact');
-        console.log(dataContact);
-
         var dataChat = '.chat-saved[data-chat="'+ dataContact +'"]';
-        console.log('dataChat: ' + dataChat);
+
         $(dataChat).addClass('visible');
         $(dataChat).siblings().removeClass('visible');
 
-      });
-
+    });
 
 
     // ===================================================
@@ -60,6 +57,7 @@ $(document).ready(
       // Prendo il vaolre dell'input
       var messaggioVal = $('.new-msg').val();
       var risposta = 'ok';
+
       // Aggiungo il messaggio tamplate alla chat
       if( messaggioVal !='' ) {
         myMessage(messaggioVal);
@@ -86,47 +84,33 @@ $(document).ready(
 
     }); // End keypress event
 
-   // ===================================================
-   // ========= ELIMINO IL MESSAGGIO DALLA CHAT ==========
+    // ===================================================
+    // ========= ELIMINO IL MESSAGGIO DALLA CHAT ==========
 
-    // Evento mouse enter sul messaggio nella chat
-    $(document).on( 'mouseenter', '.message',
+    // Al click sulla freccetta rimuovo classe .hidden delle opzioni
+    $(document).on('click', '.msg-time .message-options',
       function() {
-        $(this).find('.msg-time .message-options').removeClass('hidden');
+        // Nascondo altri opzioni qualora fossero aperti e li chiudo ver.1
+        $(this).parents('.message').siblings().find('.msg-option-dropdown').removeClass('active');
 
-      // Al click sulla freccetta rimuovo classe .hidden delle opzioni
-      $(this).find('.msg-time .message-options').click(
-        function() {
-          $(this).siblings('.msg-option-dropdown').toggleClass('hidden');
-          // All click su "elimina messaggio" - elimino tutto il mesaggio
-          $(this).siblings('.msg-option-dropdown').click(
-            function() {
-              $(this).parents('.message').remove();
-          });
-      });
+        // Nascondo altri opzioni qualora fossero aperti e li chiudo ver.2
+        $(this).parent().parent().siblings().find('.msg-option-dropdown').removeClass('active');
 
-    }); // End mouese enter event sul messaggio
+        // Visualizzo e nascondo opzione del messaggio al click sulla frecetta
+        $(this).siblings('.msg-option-dropdown').toggleClass('active');
 
-    // Quando il mouse esce nascondo la freccetta
-    $(document).on( 'mouseleave', '.message',
-      function() {
-        $(this).find('.msg-time .message-options').addClass('hidden');
+        // All click su "elimina messaggio" - elimino tutto il mesaggio (riga JS 158)
+        eliminaMessaggio()
+    });
 
-         // Nascondo il dropdown delle opzioni messaggio qualora fosse aperto
-         $(this).find('.msg-option-dropdown').addClass('hidden')
-     });
 
      //==========================================
      //======== RICERCA TRA I CONTATTI ==========
-     $('input.search-contact').keypress(function(event) {
-       var searchResult = searcContactName();
-       if(event.which === 13) {
-         searchResult
-       }
-     });
+     // Invoco la funzione di ricerca (riga JS 185)
+     searcContactName();
+
 
   }); // End document ready
-
 
 
 // ==============================================
@@ -170,6 +154,14 @@ $(document).ready(
     console.log($('.chat-window').height())
   }
 
+  // Funzione Elimina messaggio
+  function eliminaMessaggio() {
+    $('.msg-time .message-options').siblings('.msg-option-dropdown').click(
+      function() {
+        $(this).parents('.message').remove();
+    });
+  }
+
   // Prendo l'ora corrente
   function getCurrentTime() {
     var date = new Date();
@@ -188,7 +180,7 @@ $(document).ready(
     return minute
   }
 
-  // Funzione per cercare il nome del utente o chat
+  // Funzione di ricerca per il nome dell'utente o chat
   function searcContactName() {
     $('.search-contact').keyup( function() {
       var searchContact = $('input.search-contact').val().toLowerCase();

@@ -277,8 +277,13 @@ a {
   padding: 5px;
   cursor: pointer;
   font-size: 1em;
+  display: none;
+}
+.message:hover .message-options {
+  display: inline;
 }
 .message .msg-option-dropdown {
+  display: none;
   position: absolute;
   background-color: #fff;
   padding: 12px;
@@ -289,6 +294,9 @@ a {
   box-shadow: 3px 3px 8px 2px #1515152e;
   font-size: 1.1em;
   cursor: pointer;
+}
+.message .msg-option-dropdown.active {
+  display: block;
 }
 .message .msg-option-dropdown:hover {
   background-color: #e7e7e7;
