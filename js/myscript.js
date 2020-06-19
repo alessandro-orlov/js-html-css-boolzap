@@ -74,9 +74,15 @@ $(document).ready(
         // Ricevo la risposta dopo 3.5s
         setTimeout(function() {
           message(response, responseTamplate);
+
+          // Cambio il tempo dell'ultima visita del contatto attivo
+          $('li.contact-js.active').find('.time-stamp').text(lastSeenTime);
+
         }, 3500);
 
-        $('li.contact-js.active').find('.time-stamp').text(lastSeenTime)
+
+
+
       } // End if
     }); // End click on button event
 
@@ -100,6 +106,9 @@ $(document).ready(
         // Ricevo la risposta dopo 1.5sW
         setTimeout(function() {
           message(response, responseTamplate);
+
+          // Cambio il tempo dell'ultima visita del contatto attivo
+          $('li.contact-js.active').find('.time-stamp').text(lastSeenTime);
         }, 2500);
       } // End if
 
