@@ -52,33 +52,45 @@ $(document).ready(
     // ===================================================
     // =========== INVIO IL MESSAGGIO ALLA CHAT ==========
 
-    // Al click prendo il valore del input
+    // Al click sul pulasnte prendo il valore del input
     $('button.add-message-js').click(function() {
-      // Prendo il vaolre dell'input
+      // Prendo il valore per il messagio da stampare
       var messaggioVal = $('.new-msg').val();
-      var risposta = 'ok';
+      var response = 'ok';
+
+      // TAMPLATE
+      var messageTamplate = $('.tamplate .message.send').clone();
+      var responseTamplate = $('.tamplate .message.recieved').clone();
 
       // Aggiungo il messaggio tamplate alla chat
       if( messaggioVal !='' ) {
-        myMessage(messaggioVal);
+        // Stampo il messagio nella chat window (riga JS 128)
+        message(messaggioVal, messageTamplate);
 
+        // Ricevo la risposta dopo 1.5s
         setTimeout(function() {
-          responseMessage(risposta)
+          message(response, responseTamplate);
         }, 1500);
       } // End if
     }); // End click on button event
 
-    // Invio il messagio alla chat premendo l'invio
+    // Invio il messagio alla chat premendo l'invio (enter sulla tastiera)
     $('.new-msg').keypress(function(event) {
+      // Prendo il valore per il messagio da stampare
       var messaggioVal = $('.new-msg').val();
-      var risposta = 'Ciao';
-      if( (messaggioVal !='' ) && (event.which === 13) ) {
-        // Stampo il messagio nella chat window
-        myMessage(messaggioVal);
+      var response = 'Ciao';
 
-        // Dopo 1.5s invio la risposta
+      // TAMPLATE
+      var messageTamplate = $('.tamplate .message.send').clone();
+      var responseTamplate = $('.tamplate .message.recieved').clone();
+
+      if( (messaggioVal !='' ) && (event.which === 13) ) {
+        // Stampo il messagio nella chat-window
+        message(messaggioVal, messageTamplate);
+
+        // Ricevo la risposta dopo 1.5sW
         setTimeout(function() {
-          responseMessage(risposta)
+          message(response, responseTamplate);
         }, 1500);
       } // End if
 
@@ -90,8 +102,11 @@ $(document).ready(
     // Al click sulla freccetta rimuovo classe .hidden delle opzioni
     $(document).on('click', '.msg-time .message-options',
       function() {
-        // Nascondo altri opzioni qualora fossero aperti e li chiudo ver.1
+        // Nascondo altri opzioni qualora fossero aperti e gli chiudo ver.1
         $(this).parents('.message').siblings().find('.msg-option-dropdown').removeClass('active');
+
+        // // Nascondo altri opzioni qualora fossero aperti e gli chiudo ver.2
+        // $(this).parent().parent().siblings().find('.msg-option-dropdown').removeClass('active');
 
         // Nascondo altri opzioni qualora fossero aperti e li chiudo ver.2
         $(this).parent().parent().siblings().find('.msg-option-dropdown').removeClass('active');
@@ -116,43 +131,25 @@ $(document).ready(
 // ==============================================
 // =============== FUNCTIONS ====================
 
-  // Function invio del messaggio dell'utente
-  function myMessage(testoMessaggio) {
-    // Clone tamplate dal DOM html
-    var messageTamplate = $('.tamplate .message.send').clone();
-    var messageSendTime = getCurrentTime();
+// Function messagio tamplate
+function message(text, tamplate) {
+  var responseTime = getCurrentTime();
 
-    // Aggiungo al Tamplate il valore del input
-    messageTamplate.find('.msg-text').append(testoMessaggio);
-    messageTamplate.find('.msg-send-time').append(messageSendTime);
+  // Aggiungo la risposta con .text();
+  tamplate.find('.msg-text').text(text);
+  tamplate.find('.msg-send-time').append(responseTime);
 
-    // Inserisco il messaggio alla chat
-    $('.chat-window .visible').append(messageTamplate);
+  // Aggiungo il messaggi di risposta alla chat
+  $('.chat-window .visible').append(tamplate);
 
-    // Resetto il valore iniziale (vuoto) dell'input
-    testoMessaggio = $('.new-msg').val('');
+  // Resetto il valore iniziale (vuoto) dell'input
+  text = $('.new-msg').val('');
 
-    // Scroll to bottom
-    $('.chat-window').scrollTop($('.chat-window').height());
-    console.log($('.chat-window').height())
-  }
+  // Scroll to bottom
+  $('.chat-window').scrollTop($('.chat-window').height());
+  console.log($('.chat-window').height())
+}
 
-  // Function risposta al messaggio
-  function responseMessage(text) {
-    var responseTamplate = $('.tamplate .message.recieved').clone();
-    var responseTime = getCurrentTime();
-
-    // Aggiungo la risposta con .text();
-    responseTamplate.find('.msg-text').text(text);
-    responseTamplate.find('.msg-send-time').append(responseTime);
-
-    // Aggiungo il messaggi di risposta alla chat
-    $('.chat-window .visible').append(responseTamplate);
-
-    // Scroll to bottom
-    $('.chat-window').scrollTop($('.chat-window').height());
-    console.log($('.chat-window').height())
-  }
 
   // Funzione Elimina messaggio
   function eliminaMessaggio() {
