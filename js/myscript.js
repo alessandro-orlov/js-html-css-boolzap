@@ -174,19 +174,22 @@ function message(text, tamplate) {
 // Funzione risposta temporanea
 function temporalResponse(durationTime, afterTime, timeSeen) {
   setTimeout( function() {
-    $('.contact-last-seen').text('sta rispondendo ... ')
+    // Cambio la scritta per un tot di millesecondi (durationTime)
+    $('.contact-last-seen').text('Sta scrivendo ... ')
   }, durationTime);
 
   setTimeout( function() {
-
+    // Cambio i l'orario dell'ultima visita nella lista del contatto attivo
     $('li.contact-js.active').find('.time-stamp').text(timeSeen);
-    $('.contact-last-seen').html('Ultimo accesso alle: <span class="last-time-seen"></span>')
+
+    // Campio nuovamente la scritta ripristinando il tag originale "last-time-seen"" dell'ultimo accesso
+    $('.contact-last-seen').html('Ultimo accesso alle: <span class="last-time-seen"></span>');
+
+    // Prendo l'orario aggiornato del conatto attivo e lo metto nel tag ripristinato
     $('.contact-last-seen').find('.last-time-seen').text(timeSeen);
 
   }, afterTime);
-
-
-}
+} // End funzione temporalResponse
 
 
   // Funzione Elimina messaggio
