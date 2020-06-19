@@ -58,6 +58,10 @@ $(document).ready(
       var messaggioVal = $('.new-msg').val();
       var response = 'ok';
 
+      var contactName = $('.active-contact').find('.contact-name').text();
+      var temporalResponse = contactName + ' sta rispondendo ...';
+
+
       // TAMPLATE
       var messageTamplate = $('.tamplate .message.send').clone();
       var responseTamplate = $('.tamplate .message.recieved').clone();
@@ -67,10 +71,14 @@ $(document).ready(
         // Stampo il messagio nella chat window (riga JS 128)
         message(messaggioVal, messageTamplate);
 
+        setTimeout(function() {
+          message(temporalResponse, responseTamplate);
+        }, 1000);
+
         // Ricevo la risposta dopo 1.5s
         setTimeout(function() {
           message(response, responseTamplate);
-        }, 1500);
+        }, 3500);
       } // End if
     }); // End click on button event
 
@@ -80,6 +88,9 @@ $(document).ready(
       var messaggioVal = $('.new-msg').val();
       var response = 'Ciao';
 
+      var contactName = $('.active-contact').find('.contact-name').text();
+      var temporalResponse = contactName + ' sta rispondendo ...';
+
       // TAMPLATE
       var messageTamplate = $('.tamplate .message.send').clone();
       var responseTamplate = $('.tamplate .message.recieved').clone();
@@ -88,10 +99,15 @@ $(document).ready(
         // Stampo il messagio nella chat-window
         message(messaggioVal, messageTamplate);
 
+        setTimeout(function() {
+          message(temporalResponse, responseTamplate);
+        }, 1000);
+
+
         // Ricevo la risposta dopo 1.5sW
         setTimeout(function() {
           message(response, responseTamplate);
-        }, 1500);
+        }, 2500);
       } // End if
 
     }); // End keypress event
@@ -137,7 +153,7 @@ function message(text, tamplate) {
 
   // Aggiungo la risposta con .text();
   tamplate.find('.msg-text').text(text);
-  tamplate.find('.msg-send-time').append(responseTime);
+  tamplate.find('.msg-send-time').replaceWith(responseTime);
 
   // Aggiungo il messaggi di risposta alla chat
   $('.chat-window .visible').append(tamplate);
