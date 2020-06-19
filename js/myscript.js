@@ -15,6 +15,7 @@ $(document).ready(
 
         // Seleziono l'orario dell'ultima volta online
         var lastTimeSeen = $(this).find('.time-stamp').text();
+        console.log(lastTimeSeen)
 
         // Sostituisco dati del ".active-contact" con quelli cliccati
         // Sostituisco Avatar
@@ -78,6 +79,7 @@ $(document).ready(
           // Cambio il tempo dell'ultima visita del contatto attivo
           $('li.contact-js.active').find('.time-stamp').text(lastSeenTime);
 
+
         }, 3500);
 
 
@@ -109,6 +111,7 @@ $(document).ready(
 
           // Cambio il tempo dell'ultima visita del contatto attivo
           $('li.contact-js.active').find('.time-stamp').text(lastSeenTime);
+
         }, 2500);
       } // End if
 
@@ -169,14 +172,19 @@ function message(text, tamplate) {
 }
 
 // Funzione risposta temporanea
-function temporalResponse(durationTime, afterTime, lastSeenTime) {
+function temporalResponse(durationTime, afterTime, timeSeen) {
   setTimeout( function() {
     $('.contact-last-seen').text('sta rispondendo ... ')
   }, durationTime);
 
   setTimeout( function() {
-    $('.contact-last-seen').text('Ultimo accesso alle: ' + lastSeenTime)
+
+    $('li.contact-js.active').find('.time-stamp').text(timeSeen);
+    $('.contact-last-seen').html('Ultimo accesso alle: <span class="last-time-seen"></span>')
+    $('.contact-last-seen').find('.last-time-seen').text(timeSeen);
+
   }, afterTime);
+
 
 }
 
