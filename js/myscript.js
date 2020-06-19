@@ -58,9 +58,7 @@ $(document).ready(
       var messaggioVal = $('.new-msg').val();
       var response = 'ok';
 
-      var contactName = $('.active-contact').find('.contact-name').text();
-      var temporalResponse = contactName + ' sta rispondendo ...';
-
+      var lastSeenTime = getCurrentTime();
 
       // TAMPLATE
       var messageTamplate = $('.tamplate .message.send').clone();
@@ -71,14 +69,14 @@ $(document).ready(
         // Stampo il messagio nella chat window (riga JS 128)
         message(messaggioVal, messageTamplate);
 
-        setTimeout(function() {
-          message(temporalResponse, responseTamplate);
-        }, 1000);
+        temporalResponse(500, 3500, lastSeenTime);
 
-        // Ricevo la risposta dopo 1.5s
+        // Ricevo la risposta dopo 3.5s
         setTimeout(function() {
           message(response, responseTamplate);
         }, 3500);
+
+        $('li.contact-js.active').find('.time-stamp').text(lastSeenTime)
       } // End if
     }); // End click on button event
 
@@ -87,9 +85,7 @@ $(document).ready(
       // Prendo il valore per il messagio da stampare
       var messaggioVal = $('.new-msg').val();
       var response = 'Ciao';
-
-      var contactName = $('.active-contact').find('.contact-name').text();
-      var temporalResponse = contactName + ' sta rispondendo ...';
+      var lastSeenTime = getCurrentTime();
 
       // TAMPLATE
       var messageTamplate = $('.tamplate .message.send').clone();
@@ -99,10 +95,7 @@ $(document).ready(
         // Stampo il messagio nella chat-window
         message(messaggioVal, messageTamplate);
 
-        setTimeout(function() {
-          message(temporalResponse, responseTamplate);
-        }, 1000);
-
+        temporalResponse(500, 2500, lastSeenTime);
 
         // Ricevo la risposta dopo 1.5sW
         setTimeout(function() {
@@ -166,6 +159,18 @@ function message(text, tamplate) {
   console.log($('.chat-window').height())
 }
 
+// Funzione risposta temporanea
+function temporalResponse(durationTime, afterTime, lastSeenTime) {
+  setTimeout( function() {
+    $('.contact-last-seen').text('sta rispondendo ... ')
+  }, durationTime);
+
+  setTimeout( function() {
+    $('.contact-last-seen').text('Ultimo accesso alle: ' + lastSeenTime)
+  }, afterTime);
+
+}
+
 
   // Funzione Elimina messaggio
   function eliminaMessaggio() {
@@ -192,6 +197,7 @@ function message(text, tamplate) {
     }
     return minute
   }
+
 
   // Funzione di ricerca per il nome dell'utente o chat
   function searcContactName() {
