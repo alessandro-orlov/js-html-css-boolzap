@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
 /* GENERAL RULES */
@@ -158,7 +159,6 @@ a {
   border: 1px solid #b1b1b1;
   border-radius: 3px;
   font-size: 1em;
-  outline: none;
 }
 .search-chat input::placeholder {
   font-size: 0.9em;
@@ -314,7 +314,6 @@ a {
 .send-message button {
   border: none;
   background: none;
-  outline: none;
   cursor: pointer;
   color: #6b7376;
   font-size: 1.4em;
@@ -326,7 +325,6 @@ a {
 .write-message input {
  width: 100%;
  padding: 15px;
- outline: none;
  border: none;
  border-radius: 5px;
 }
