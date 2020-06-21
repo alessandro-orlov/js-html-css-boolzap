@@ -28,60 +28,52 @@ body {
   height: calc(100vh - 30px);
   background: green;
 }
-
 .boolz-app::after {
   content: '';
   display: table;
   clear: both;
 }
-
 div[class*="-side"] {
   float: left;
   min-height: 300px;
 }
-
+.boolz-app .controls i {
+  cursor: pointer;
+}
 .left-side {
   width:35%;
   background: red;
   height: 100%;
   border-right: 1px solid #d6d6d6;
 }
-
 .right-side {
   width:65%;
   height: 100%
 }
-
 .left-side .my-account,
 .left-side .search-chat,
 .right-side .active-contact,
 .right-side .send-message {
   padding: 10px;
 }
-
 .left-side .notifiche {
   padding: 15px;
 }
-
 ul {
   list-style: none;
 }
-
 a {
   text-decoration: none;
 }
-
 [alt*="avatar"] {
   height: 100%;
   vertical-align: middle;
   border-radius: 50%;
   display: inline-block;
 }
-
 .hidden {
   display: none;
 }
-
 
 /* LEFT SIDE STYLE */
 /* My account block */
