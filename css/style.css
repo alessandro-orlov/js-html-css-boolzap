@@ -318,6 +318,7 @@ a {
   color: #6b7376;
   font-size: 1.4em;
   padding: 2px;
+  transition: .3s;
 }
 .send-message .write-message {
   flex-basis: 80%;
@@ -327,16 +328,36 @@ a {
  padding: 15px;
  border: none;
  border-radius: 5px;
+ transition: .3s;
+}
+.write-message input:focus {
+  box-shadow: 0px 0px 12px 2px #58585852;
 }
 .send-message .emoji,
 .send-message .send-btn {
   flex-basis: 10%;
   text-align: center;
 }
+.send-message .emoji button:hover {
+  color: #ffbf00;
+}
+.send-message .send-btn button:hover .send-audio-msg,
+.send-message .send-btn button:hover .send-normal-msg  {
+  color: #009688;
+}
 .send-btn .send-audio-msg,
-.send-btn button:active .send-normal-msg {
-  display: none;
+.send-btn .send-normal-msg {
+ display: none;
+ width: 0px;
+}
+.send-btn .send-audio-msg.active,
+.send-btn .send-normal-msg.active {
+ display: block;
+ transition: .3s;
 }
 .send-btn button:active .send-audio-msg {
+  display: none;
+}
+.send-btn button:active .send-normal-msg {
   display: block;
 }
