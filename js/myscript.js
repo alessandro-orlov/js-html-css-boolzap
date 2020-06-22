@@ -75,7 +75,7 @@ $(document).ready(
         message(messaggioVal, messageTamplate);
 
         // Dopo 0.5s Visualizzo che si sta digitando la risposta per 3.5s
-        typingResponse(500, 3500, lastSeenTime);
+        typingResponse(500, 3500, 7000, lastSeenTime);
 
         // Stampo il messaggio di risposta dopo 3.5s
         setTimeout(function() {
@@ -110,7 +110,7 @@ $(document).ready(
         message(messaggioVal, messageTamplate);
 
         // Dopo 0.5s Visualizzo che si sta digitando la risposta per 2.5s
-        typingResponse(500, 2500, lastSeenTime);
+        typingResponse(500, 2500, 7000, lastSeenTime);
 
         // Ricevo la risposta dopo 2.5s
         setTimeout(function() {
@@ -193,11 +193,15 @@ function message(text, tamplate) {
 }
 
 // Funzione risposta temporanea
-function typingResponse(durationTime, afterTime, timeSeen) {
+function typingResponse(durationTime, onlineTime, afterTime, timeSeen) {
   setTimeout( function() {
     // Cambio la scritta per un tot di millesecondi (durationTime)
     $('.contact-last-seen').text('Sta scrivendo ... ')
   }, durationTime);
+
+  setTimeout(function() {
+    $('.contact-last-seen').text('Online ')
+  }, onlineTime);
 
   setTimeout( function() {
     // Cambio i l'orario dell'ultima visita nella lista del contatto attivo
@@ -210,6 +214,8 @@ function typingResponse(durationTime, afterTime, timeSeen) {
     $('.contact-last-seen').find('.last-time-seen').text(timeSeen);
 
   }, afterTime);
+
+
 } // End funzione temporalResponse
 
 
